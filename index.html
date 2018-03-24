@@ -12,20 +12,22 @@
 </head>
 <body>
 	<div class="container">
-		<nav class="nav mx-auto fixed-top justify-content-end">
-			<ul class="nav">
-				<li class="nav-item"><a href="#pageHome" class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="#pageAbout" class="nav-link">About me</a></li>
-				<li class="nav-item"><a href="#pageProjects" class="nav-link">Projects</a></li>
-				<li class="nav-item"><a href="#pageContacts" class="nav-link">Contacts</a></li>
-			</ul>
-		</nav>
+		<div class="row">
+			<nav class="nav mx-auto fixed-top justify-content-end col-lg-10 col-md-8 col-sm-8">
+				<ul class="nav">
+					<li class="nav-item"><a href="#pageHome" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="#pageAbout" class="nav-link">About me</a></li>
+					<li class="nav-item"><a href="#pageProjects" class="nav-link">Projects</a></li>
+					<li class="nav-item"><a href="#pageContacts" class="nav-link">Contacts</a></li>
+				</ul>
+			</nav>
+		</div>		
 	</div>
 	<section class="font-weight-bold">
 		<a name="pageHome"></a>
 		<div class="container pageHome">
 			<div class="row">
-				<div class="col-lg-12 col-md-12">
+				<div class="col-lg-12 col-md-10 col-sm-8">
 					<h1 class="text-left text-uppercase font-weight-bold">I<span class="colorFunH1">&#39;</span>m<br />Stoyan<br />Anev<span class="colorFunH1">.</span></h1>
 					<h4 class="text-left font-weight-bold">Front-end developer</h4>
 				</div>
@@ -34,45 +36,36 @@
 		<a name="pageAbout"></a>
 		<div class="container pageAbout">
 			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<img src="res/img/me.jpg" title="My photo" class="rounded-circle float-right" alt="My Photo" />
+				<div class="col-lg-12 col-md-12 col-sm-2">
+					<img src="res/img/me.jpg" title="My photo" class="rounded-circle float-right img-responsive" alt="My Photo" />
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-lg-8 col-md-8 col-sm-12">
 					<h2>About me</h2>
 					<p>
 						I&#39;m a young, ambitious programmer who has no professional experience but is highly motivated to succeed. Last year I have built my knowledge, earning two certificates for Front End Development from <a href="http://webacademy.bg/" title="Web Academy page" target="_blank">Web Academy</a> that is organized and run by <a href="https://www.bgosoftware.com/" title="BGO Software page" target="_blank">BGO Software</a>. At my free time i like to take pictures of everything that like.
 					</p>
 				</div>
 			</div>
-			
-			<!-- <div class="col-md-4">
-				<span>
-					<a href="https://www.facebook.com/stoian.anev" title="My Facebook profile" target="_blank"><img src="res/image/facebook.png" alt="Facebook" class="socialIcons" /></a>
-					<a href="https://www.linkedin.com/in/stoyan-anev-7a7744145/" title="My LinkedIn profile" target="_blank"><img src="res/image/linkedin.png" alt="LinkedIn" class="socialIcons"/></a>
-					<a href="https://plus.google.com/u/0/114810723468615333566" title="My Google+ profile" target="_blank"><img src="res/image/google-plus.png" alt="G+" class="socialIcons"/></a>
-					<a href="https://twitter.com/Anev_Dw" title="My Twitter profile" target="_blank"><img src="res/image/twitter.png" alt="Twitter" class="socialIcons"/></a>
-				</span>
-			</div> -->
 			<hr />
 			<br />
 		</div>
 		<a name="pageProjects"></a>
 		<div class="container pageProjects">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-lg-12 col-md-12">
 					<h2>Projects</h2>
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-4">
 					<a href="photography/index.html"><img src="res/img/gallery.jpg" alt="Project" class="img-thumbnail" /></a>
 				</div>
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-4">
 					<a href="#"><img src="res/img/blank_project.jpg" alt="Project" class="img-thumbnail" /></a>
 				</div>
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-4">
 					<a href="#"><img src="res/img/blank_project.jpg" alt="Project" class="img-thumbnail" /></a>
 				</div>
 			</div>
@@ -83,19 +76,19 @@
 		<footer>
 			<div class="container pageContacts">
 				<div class="row">	
-					<div class="col-md-12">
+					<div class="col-lg-12 col-md-12 col-sm-12">
 						<h2>Contacts</h2>
 					</div>					
 				</div>
 				<div class="row">
-						<div class="col-md-4 col-lg-4 text-left">
+						<div class="col-lg-4 col-md-6 col-sm-6 text-left">
 							<ul>
 								<li>Phone: +359 899 214 001</li>
 								<li>Email: Stoian4001@gmail.com</li>
 								<li>Address: Sofia, Bulgaria</li>
 							</ul>
 						</div>
-						<div class="col-md-4 col-lg-4 text-center">
+						<div class="col-lg-4 col-md-4 col-sm-5 text-center">
 							<span>								
 								<a href="https://github.com/Stoyan1004" title="My GitHub profile" target="_blank"><img src="res/img/github.png" alt="GitHub" class="socialIcons"/></a>
 								<a href="https://www.facebook.com/stoian.anev" title="My Facebook profile" target="_blank"><img src="res/img/facebook.png" alt="Facebook" class="socialIcons" /></a>
@@ -105,7 +98,7 @@
 								<a href="https://www.instagram.com/stoyan_anev/" title="My Instagram profile" target="_blank"><img src="res/img/instagram.png" alt="Instagram" class="socialIcons"/></a>
 							</span>
 						</div>
-						<div class="col-md-4 col-lg-4 text-right">
+						<div class="col-lg-4 col-md-2 col-sm-1 text-right">
 							<img src="res/img/logo_original.png" title="My logo" alt="My logo" />
 						</div>
 					</div>

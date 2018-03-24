@@ -77,6 +77,7 @@ img[src$="me.jpg"] {
 .socialIcons{
 	width: 40px;
 	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
 .pageContacts div:nth-of-type(2) {
@@ -92,4 +93,13 @@ img[src$="original.png"] {
 	margin-right: 50px;
 	margin-top: -10px;
 	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+	img[src$="me.jpg"] {
+		width: 150px;
+	}
+	img[src$="original.png"]{
+		width: 60px;
+	}
 }

@@ -7,13 +7,8 @@ $(document).ready(function(){
 		}, function(){
 
 			$(this).css({
-<<<<<<< HEAD
 				'border-radius': '20%',
 				'transition': 'border-radius 0.3s ease-in-out'})
-=======
-				"border-radius": "20%",
-				"transition": "border-radius 0.3s ease-in-out"})
->>>>>>> fab8b4896e70a766f338faa9480a28c1674700ca
 		});
 
 		$('.myProjects').hover(function(){

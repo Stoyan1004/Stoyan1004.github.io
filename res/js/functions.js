@@ -7,7 +7,7 @@ $(document).ready(function(){
 		}, function(){
 
 			$(this).css({
-				"border-radius": "0%",
+				"border-radius": "20%",
 				"transition": "border-radius 0.3s ease-in-out"})
 		});
 });

@@ -30,10 +30,6 @@ hr {
 	color: var(--my-color-blue, #33ccff);
 }
 
-div nav {
-	width: 1000px;
-}
-
 a:link, a:visited {
 	text-decoration: none;
 	color: var(--my-color-blue, #33ccff);
@@ -41,6 +37,11 @@ a:link, a:visited {
 a:hover, a:active {
 	text-decoration: none;
 	color: white;
+}
+
+.pageHome div[class='row']{
+	margin-right: 0px;
+	margin-left: 0px;
 }
 
 .pageHome h1{
@@ -62,15 +63,15 @@ img[src$="me.jpg"] {
 
 .pageAbout div:nth-of-type(2) {
 	margin-top: -80px;
-	padding-left: 40px;
+	padding-left: 50px;
 }
 
 .pageProjects h2, .pageContacts h2 {
-	padding-left: 40px;
+	padding-left: 50px;
 }
 
 .pageProjects img {
-	margin: 50px;
+	margin: 50px 0px 50px 50px;
 	width: 200px;
 }
 
@@ -87,6 +88,7 @@ img[src$="me.jpg"] {
 
 .pageContacts ul {
 	list-style-type: none;
+	padding-left: 50px;
 }
 
 img[src$="original.png"] {
@@ -94,13 +96,4 @@ img[src$="original.png"] {
 	margin-right: 50px;
 	margin-top: -10px;
 	margin-bottom: 20px;
-}
-
-@media (min-width: @screen-sm-min) {
-	img[src$="me.jpg"] {
-		width: 150px;
-	}
-	img[src$="original.png"]{
-		width: 60px;
-	}
 }

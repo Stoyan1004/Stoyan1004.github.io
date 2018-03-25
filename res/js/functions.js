@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 			$(this).css({
 				'width': '200px',
-				'margin': '50px',
+				'margin': '50px auto',
 				'box-shadow': 'none',
 				'transition': 'width 0.3s, margin 0.3s box-shadow 0.3s'})
 		});

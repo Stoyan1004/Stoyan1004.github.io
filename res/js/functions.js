@@ -88,7 +88,7 @@ function getCurrentTemp (lat, lon)
 function weatherFunction(tempData)
 {
 	var weatherTemp = tempData.main.temp;
-	var weatherIcon = 'http://openweathermap.org/img/w/' + tempData.weather[0].icon + '.png';
+	var weatherIcon = 'https://openweathermap.org/img/w/' + tempData.weather[0].icon + '.png';
 	var weatherDescription = tempData.weather[0].main;
 	var weatherMinTemp = tempData.main.temp_min;
 	var weatherMaxTemp = tempData.main.temp_max;

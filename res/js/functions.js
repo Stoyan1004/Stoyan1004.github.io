@@ -27,7 +27,7 @@ $(document).ready(function()
 			'width': '250px',
 			'margin': '0px',
 			'box-shadow': '0px 0px 10px 1px black, 0px 0px 20px 15px white',
-			'transition': 'width 0.3s, margin 0.3s box-shadow 0.3s'
+			'transition': 'width 0.3s, margin 0.3s, box-shadow 0.3s'
 		})
 	},
 	function()
@@ -38,7 +38,7 @@ $(document).ready(function()
 			'width': '200px',
 			'margin': '50px auto',
 			'box-shadow': 'none',
-			'transition': 'width 0.3s, margin 0.3s box-shadow 0.3s'
+			'transition': 'width 0.3s, margin 0.3s, box-shadow 0.3s'
 		})
 	});
 

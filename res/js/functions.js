@@ -93,10 +93,8 @@ function weatherFunction(tempData)
 	var weatherMinTemp = tempData.main.temp_min;
 	var weatherMaxTemp = tempData.main.temp_max;
 	var weatherHumidity = tempData.main.humidity;
-	var weatherContainer = $('.pageAbout div:nth-of-type(3)');
-	weatherContainer.css({
-		'margin-left': '50px'
-	});
+	
+	
 	var weatherContainerData = '<table><tr><td>';
 	weatherContainerData += '<img src="' + weatherIcon + '" alt="Weather icon" class="weatherIconClass" />';
 	weatherContainerData += '</td>';
@@ -107,7 +105,10 @@ function weatherFunction(tempData)
 	weatherContainerData += '<tr><td colspan="2">';
 	weatherContainerData += '<p class="weatherText">' + weatherDescription + '</p>';
 	weatherContainerData += '</td></tr></table>';
-	weatherContainer.html(weatherContainerData);
+	$('#weather').html(weatherContainerData);
+	$('#weather').css({
+		'margin-top': '30px'
+	});
 }
 
 /*

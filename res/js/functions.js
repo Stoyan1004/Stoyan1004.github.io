@@ -71,7 +71,7 @@ function getCurrentTemp (lat, lon)
 	var context = this;
 	var request = $.ajax({
 		method: "GET",
-		url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=f60853ec104931e7f0b2c764befb03f7",
+		url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=f60853ec104931e7f0b2c764befb03f7",
 		dataType: "json"
 	}).done(function(response)
 	{

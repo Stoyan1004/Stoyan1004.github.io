@@ -83,8 +83,8 @@ img[src$="me.jpg"] {
 	padding-left: 50px;
 }
 
-.pageProjects img {
-	margin: 50px 0px 50px 50px;
+.pageProjectsImg {
+	margin: 50px auto;
 	width: 200px;
 }
 
@@ -112,22 +112,18 @@ img[src$="me.jpg"] {
 }
 
 .weatherIconClass {
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 }
 
 table {
 	border-collapse: collapse;
-}
-
-.weatherText {
-	font-size: 20px;
-	font-weight: bold;
+	margin: auto;
 }
 
 td p {
-	padding: 0px;
-	margin: 0px;
+	padding: 0px auto 0px 0px;
+	margin: 0px auto 0px 0px;
 }
 
 td[colspan='2'] p {
@@ -135,4 +131,21 @@ td[colspan='2'] p {
 	padding-top: -10px;
 }
 
-#
+#weather table {
+	border-bottom: 1px solid black;
+}
+#weatherThreeDays table {
+	height: 100px;
+	width: 50px;
+	display: inline;
+}
+
+#weatherThreeDays table:nth-of-type(2) {
+	padding: 0px 6px;
+	margin: 0px 6px;
+}
+
+#showWeatherHere {
+	width: 200px;
+	margin-top: 5px;
+}

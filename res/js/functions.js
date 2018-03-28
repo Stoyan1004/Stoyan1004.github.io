@@ -1,8 +1,8 @@
 $(document).ready(function()
-{
+{	
+	//създавам ефекти върху иконите за социалните мрежи
 	$('.socialIcons').hover(function()
 	{
-
 		$(this).css(
 		{
 			'border-radius': '50%',
@@ -11,7 +11,6 @@ $(document).ready(function()
 	},
 	function()
 	{
-
 		$(this).css(
 		{
 			'border-radius': '20%',
@@ -19,9 +18,9 @@ $(document).ready(function()
 		})
 	});
 
+	//създавам ефект върху 
 	$('.myProjects').hover(function()
 	{
-
 		$(this).css(
 		{
 			'width': '250px',
@@ -32,7 +31,6 @@ $(document).ready(function()
 	},
 	function()
 	{
-
 		$(this).css(
 		{
 			'width': '200px',
@@ -42,12 +40,33 @@ $(document).ready(function()
 		})
 	});
 
-	getLocation();
-	//showWeather();
+	//извиквам функцията за времето(по подразбиране за гр. София)
+	weatherTempLocation();
+
+	//при кликване на бутона съответно показва времето в текущото местоположение
+	//или превключва в режим по подразбиране за гр. София
+	$('#showWeatherHere').click(function()
+	{
+
+		if ($(this).data('weather') == '1')
+		{
+			getLocation();
+			$(this).data('weather', 0);
+			$(this).text('Show weather in Sofia');
+		}
+		else
+		{
+			weatherTempLocation();
+			$(this).data('weather', 1);
+			$(this).text('Show weather here');
+		}
+	});
 
 });
 
-function getLocation() {
+//функция за взземане на текущата локация
+function getLocation()
+{
 	if (navigator.geolocation) 
 	{
 		navigator.geolocation.getCurrentPosition(showPosition);
@@ -63,72 +82,130 @@ function showPosition(position)
 	var lat = position.coords.latitude.toFixed(3); 
 	var lon = position.coords.longitude.toFixed(3);
 	//console.log(lat + '\n' + lon);
-	getCurrentTemp(lat, lon);
+	weatherTempLocation(lat, lon);
 }
 
-function getCurrentTemp (lat, lon)
+
+function weatherTempLocation (latitude, longitude)
 {
-	var context = this;
-	var request = $.ajax({
-		method: "GET",
-		url: "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=f60853ec104931e7f0b2c764befb03f7",
-		dataType: "json"
+	//проверявам дали е са подадени ширина и дължина за намиране на локация, ако не са по подразбиране задаваме стойности за гр. София
+	var lat;
+	var lon;
+
+	if (latitude != '' && longitude != '' 
+		&& latitude != null && longitude != null 
+		&& latitude != undefined && longitude != undefined)
+	{
+		lat = latitude;
+		lon = longitude;
+	}
+	else
+	{
+		lat = '42.697';
+		lon = '23.324';
+	}
+	//JSON response за времето в момента
+	$.ajax({
+		method: 'get',
+		url: 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=f60853ec104931e7f0b2c764befb03f7',
+		dataType: 'json'
 	}).done(function(response)
 	{
-		weatherFunction(response);
+		
+		currentWeatherFunction(response);
+
 	}).fail(function()
 	{
 		console.log('Error occured!');
+
+	}).always(function()
+	{
+		console.log('Completed!');
+	});
+
+	//JSON response за времето в следващите 3 дни
+	$.ajax({
+		method: 'get',
+		url: 'https://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + lon + '&cnt=4&units=metric&appid=f60853ec104931e7f0b2c764befb03f7',
+		dataType: 'json'
+	}).done(function(response)
+	{
+		dailyForecastFunction(response);
+
+	}).fail(function()
+	{
+		console.log('Error occured!');
+
 	}).always(function()
 	{
 		console.log('Completed!');
 	});
 }
 
-function weatherFunction(tempData)
-{
+
+//извличам данните за настоящото време
+function currentWeatherFunction(tempData)
+{	
+	//запазвам данните от responce в променливи
 	var weatherTemp = tempData.main.temp;
 	var weatherIcon = 'https://openweathermap.org/img/w/' + tempData.weather[0].icon + '.png';
-	var weatherDescription = tempData.weather[0].main;
-	var weatherMinTemp = tempData.main.temp_min;
-	var weatherMaxTemp = tempData.main.temp_max;
-	var weatherHumidity = tempData.main.humidity;
+	var weatherLocation = tempData.name;
 	
-	
+	//създавам променлива в коята съхранявам таблицата с данните за времето в момента
 	var weatherContainerData = '<table><tr><td>';
+
 	weatherContainerData += '<img src="' + weatherIcon + '" alt="Weather icon" class="weatherIconClass" />';
 	weatherContainerData += '</td>';
 	weatherContainerData += '<td>';
-	weatherContainerData += '<p class="weatherText">' + weatherTemp + '&deg;</p>';
-	weatherContainerData += '<p>' + weatherMinTemp + '&deg;/&nbsp; ' + weatherMaxTemp +'&deg;</p>';
+	weatherContainerData += '<p>' + weatherTemp + '&deg;</p>';
+	weatherContainerData += '<p class="min_max_temp"></p>';
 	weatherContainerData += '</td></tr>';
 	weatherContainerData += '<tr><td colspan="2">';
-	weatherContainerData += '<p class="weatherText">' + weatherDescription + '</p>';
-	weatherContainerData += '</td></tr></table>';
+	weatherContainerData += '<p>' + weatherLocation + '</p>';
+	weatherContainerData += '</td></tr>';
+	weatherContainerData+= '</td></tr></table>';
+
+	//изчертавам таблицата в определения за това div
 	$('#weather').html(weatherContainerData);
-	$('#weather').css({
-		'margin-top': '30px'
-	});
+
+	//console.log(weatherContainerData);
+
+
 }
 
-/*
-function showWeather(){
-	var weatherContainer = $('.pageAbout div:nth-of-type(3)');
-	weatherContainer.css({
-		'width': '300px',
-		'height': '100px',
-		'margin-left': '50px'
-	});
-	var weatherContainerData = '<table><tr><td>';
-	weatherContainerData += '<img src="' + weatherIcon + '" alt="Weather icon" class="weatherIconClass" />';
-	weatherContainerData += '</td>';
-	weatherContainerData += '<td>';
-	weatherContainerData += '<p><span class="weatherText">' + weatherTemp + '&deg;</span></p>';
-	weatherContainerData += '<p>' + weatherMinTemp + '&deg;/' + weatherMaxTemp +'&deg;</p>';
-	weatherContainerData += '</td></tr>';
-	weatherContainerData += '<tr><td colspan="2">';
-	weatherContainerData += '<p><span class="weatherText">' + weatherDescription + '</span></p>';
-	weatherContainerData += '</td></tr></table>';
-	weatherContainer.html(weatherContainerData);
+//извличам данните за следващите дни и минималнта и максимална темература на настоящия ден
+function dailyForecastFunction(tempData)
+{
+	var weatherMinTempToday = tempData.list[0].temp.min.toFixed(0);
+	var weatherMaxTempToday = tempData.list[0].temp.max.toFixed(0);
+	
+	//създавам масив в който ще съхранявам данните за следващите 3 дни
+	var weatherThreeDays = [];
+
+	for (var i = 1; i <= 3; i++)
+	{
+		//създавам масив за да съхранявам необходимата информация за деня и след това да я добавя към общия масив
+		var tempArray = [];
+
+		tempArray.push('https://openweathermap.org/img/w/' + tempData.list[i].weather[0].icon + '.png');
+		tempArray.push(tempData.list[i].temp.min.toFixed(0));
+		tempArray.push(tempData.list[i].temp.max.toFixed(0));
+
+		weatherThreeDays.push(tempArray);
+	}
+
+	$('.min_max_temp').html(weatherMinTempToday + '&deg;/' + weatherMaxTempToday + '&deg;');
+
+	//създавам празен масив в който запазвам таблиците с данни за следващите 3 дни
+	var weatherThreeDaysContainerData = '';
+
+	$.each(weatherThreeDays, function(index)
+	{
+		weatherThreeDaysContainerData += '<table>';
+		weatherThreeDaysContainerData += '<tr><td><img src="' + weatherThreeDays[index][0] + '" alt="Weather icon" class="weatherIconClass"/></td></tr>';
+		weatherThreeDaysContainerData +='<tr><td class="weatherText">' + weatherThreeDays[index][1] + '&deg;/' + weatherThreeDays[index][2] + '&deg;</td></tr>';
+		weatherThreeDaysContainerData += '</table>';
+	});	
+
+	$('#weatherThreeDays').html(weatherThreeDaysContainerData);
 }
-*/
